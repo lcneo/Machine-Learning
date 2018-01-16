@@ -79,6 +79,7 @@ def fun_test():
     print ('******************** Data Info *********************')
     print ('#training data: %d, #testing_data: %d, dimension: %d' % (num_train, num_test, num_feat))
     get_svm_predict(train_x,train_y,test_x,test_y)
-    
+ 
 #fun_test()
-npy = get_hog_data()
+if __name__ == "__main__":
+    npy = get_hog_data()
