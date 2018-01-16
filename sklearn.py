@@ -100,8 +100,6 @@ for classifier in test_classifiers:
         print ('precision: %.2f%%, recall: %.2f%%' % (100 * precision, 100 * recall))
         csv.append('precision: %.2f%%, recall: %.2f%%' % (100 * precision, 100 * recall))
     accuracy = metrics.accuracy_score(test_y, predict)
-        
-    accuracy = metrics.accuracy_score(test_y, predict)
     print ('accuracy: %.2f%%' % (100 * accuracy))
     csv.append('accuracy: %.2f%%' % (100 * accuracy))
     dcsv = pd.DataFrame(csv)
