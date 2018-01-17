@@ -2,3 +2,9 @@
 *.pyc
 .DS_Store
 *.ini
+DataSet/No4_hog_flatten.npy
+DataSet/No4_hog_fd.npy
+*.npy
+*.npy
+DataSet/No4_hog.npy
+DataSet/No4_hog.npy

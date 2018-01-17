@@ -7,9 +7,9 @@ import time
 from tqdm import tqdm
 
 #设置HOG的参数
-orientations=8
-pixels_per_cell=(4, 4)
-cells_per_block=(1, 1)
+orientations=16
+pixels_per_cell=(16, 16)
+cells_per_block=(3, 3)
 block_norm = 'L2-Hys'
 visualise=True
 
@@ -39,12 +39,13 @@ def get_svm_predict(train_x,train_y,test_x,test_y):
 #提取HOG特征
 def fun_hog(im,orientations=orientations, pixels_per_cell=pixels_per_cell,cells_per_block=cells_per_block,block_norm = block_norm,visualise=visualise):
     fd, hog_image = hog(im,orientations=orientations, pixels_per_cell=pixels_per_cell,cells_per_block=cells_per_block,block_norm = block_norm,visualise=visualise)
+    #fd = hog(im)
     return fd
 
 #将图片全部转换为一维的数组
 def get_data():
     train_x,test_x = [],[]
-    train,train_y,test,test_y = np.load("DataSet/No4.npy")
+    train,train_y,test,test_y = np.load("hog.npy")
     for i in train:
         train_x.append(i.flatten())
     for i in test:
@@ -56,6 +57,7 @@ def get_hog_data():
     start_time = time.time()
     train,train_y,test,test_y = np.load("DataSet/No4.npy")
     for i in tqdm(train):
+
         train_x.append(fun_hog(i))
     for i in tqdm(test):
         test_x.append(fun_hog(i))
@@ -83,3 +85,4 @@ def fun_test():
 #fun_test()
 if __name__ == "__main__":
     npy = get_hog_data()
+    np.save("hog",npy)
