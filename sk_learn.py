@@ -2,6 +2,7 @@ import time
 from sklearn import metrics
 import numpy as np
 import pandas as pd
+import time
 
 csv = []
 f = pd.read_pickle("/Users/neo/Downloads/mnist.pkl")
