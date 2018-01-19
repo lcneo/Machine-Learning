@@ -47,7 +47,7 @@ def predict(train_x,train_y,test_x,test_y,model = model_knn,show = False):
     return accuracy
 
 #PCA 输入为矩阵,输出为矩阵;
-def pca(Mat,n_components = 0.38,svd_solver ='auto',whiten=True):
+def pca(Mat,n_components = 0.38,svd_solver ='full',whiten=True):
 	from sklearn.decomposition import PCA
 	model_pca = PCA(n_components=n_components, svd_solver=svd_solver,whiten=whiten)
 	model_pca.fit(Mat)

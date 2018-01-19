@@ -23,6 +23,8 @@ def get_predict():
 	X = preprocessing.scale(X)
 	train_x,test_x =X[:len(train_y)],X[len(train_y):]
 	get_svm_predict(train_x,train_y,test_x,test_y)
+
+
 if __name__ == "__main__":
 	get_predict()
 
