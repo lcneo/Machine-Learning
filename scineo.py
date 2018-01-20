@@ -36,6 +36,16 @@ def predict_knn(train_x,train_y,test_x,test_y,neighbors = 1,show = False):
     	print("识别率为:%.2f%%"%(accuracy*100))
     return accuracy
 
+def predict_svm(train_x,train_y,test_x,test_y,kernel = 'rbf',show = False):
+    start_time = time.time()
+    model = model_svm(train_x, train_y,kernel = kernel)
+    predict = model.predict(test_x)
+    accuracy = metrics.accuracy_score(test_y, predict)
+    if show == True:
+        print ('training took %fs!' % (time.time() - start_time))
+        print("识别率为:%.2f%%"%(accuracy*100))
+    return accuracy
+
 def predict(train_x,train_y,test_x,test_y,model = model_knn,show = False):
     start_time = time.time()
     model = model(train_x,train_y)
