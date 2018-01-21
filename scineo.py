@@ -74,7 +74,7 @@ def pca(Mat,n_components = 0.38,svd_solver ='full',whiten=True):
 	Mat = model_pca.transform(Mat)
 	return Mat
 
-def hog(mat,orientations=16, pixels_per_cell=(16, 16),cells_per_block=(3, 3)):
+def hog(mat,orientations=9, pixels_per_cell=(8, 8),cells_per_block=(3, 3)):
     from skimage.feature import hog as fun_hog
     hog_mat = []
     for im in mat:
