@@ -1,5 +1,4 @@
 from sklearn import metrics
-from skimage.feature import hog
 import numpy as np
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
@@ -37,10 +36,9 @@ def get_svm_predict(train_x,train_y,test_x,test_y):
     
 
 #提取HOG特征
-def fun_hog(im,orientations=orientations, pixels_per_cell=pixels_per_cell,cells_per_block=cells_per_block,block_norm = block_norm,visualise=visualise):
-    fd, hog_image = hog(im,orientations=orientations, pixels_per_cell=pixels_per_cell,cells_per_block=cells_per_block,block_norm = block_norm,visualise=visualise)
-    #fd = hog(im)
-    return fd
+def hog(im,orientations=orientations, pixels_per_cell=pixels_per_cell,cells_per_block=cells_per_block,block_norm = block_norm):
+    from skimage.feature import hog as fun_hog
+    return fun_hog(im,orientations=orientations, pixels_per_cell=pixels_per_cell,cells_per_block=cells_per_block,block_norm = block_norm,visualise=False)
 
 #将图片全部转换为一维的数组
 def get_data():
