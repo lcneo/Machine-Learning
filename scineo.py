@@ -120,7 +120,7 @@ def hog_mat(mat,orientations=9, pixels_per_cell=(8, 8),cells_per_block=(3, 3)):
     train,train_y,test,test_y = mat
     train_x = hog(train,orientations = orientations,pixels_per_cell = pixels_per_cell,cells_per_block = cells_per_block)
     test_x = hog(test,orientations = orientations,pixels_per_cell = pixels_per_cell,cells_per_block = cells_per_block)
-    print("transform time : %.2f S\t detail : %d"%(time.time()- start,mat[0].shape[1]))
+    print("transform time : %.2f S\t detail : %d"%(time.time()- start,train_x.shape[1]))
     return train_x,train_y,test_x,test_y
 
 
