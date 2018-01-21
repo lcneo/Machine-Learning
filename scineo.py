@@ -106,6 +106,7 @@ def pca(mat,n_components = 0.38,svd_solver ='full',whiten=True):
 	mat = model_pca.transform(mat)
 	return mat
 
+#提取hog特征
 def hog(mat,orientations=9, pixels_per_cell=(8, 8),cells_per_block=(3, 3)):
     from skimage.feature import hog as fun_hog
     hog_mat = []
@@ -113,7 +114,14 @@ def hog(mat,orientations=9, pixels_per_cell=(8, 8),cells_per_block=(3, 3)):
         fd = fun_hog(im,orientations=orientations, pixels_per_cell=pixels_per_cell,cells_per_block=cells_per_block,block_norm = 'L2-Hys',visualise=False)
         hog_mat.append(fd)
     return np.array(hog_mat)
-
+#
+def hog_mat(mat,orientations=9, pixels_per_cell=(8, 8),cells_per_block=(3, 3)):
+    start = time.time()
+    train,train_y,test,test_y = mat
+    train_x = hog(train,orientations = orientations,pixels_per_cell = pixels_per_cell,cells_per_block = cells_per_block)
+    test_x = hog(test,orientations = orientations,pixels_per_cell = pixels_per_cell,cells_per_block = cells_per_block)
+    print("transform time : %.2f S\t detail : %d"%(time.time()- start,mat[0].shape[1]))
+    return train_x,train_y,test_x,test_y
 
 
 if __name__ == '__main__':
